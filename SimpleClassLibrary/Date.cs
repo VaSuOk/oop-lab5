@@ -1,12 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace SimpleClassConlsole
+namespace SimpleClassLibrary
 {
-    class Date
+    public class Date
     {
         protected int Year;
         protected int Month;
@@ -23,7 +21,7 @@ namespace SimpleClassConlsole
         public int Get_Year() { return Year; }
         public int Get_Month() { return Month; }
         public int Get_Day() { return Day; }
-        public int Get_Hours() { return Hours;  }
+        public int Get_Hours() { return Hours; }
         public int Get_Minutes() { return Minutes; }
 
 

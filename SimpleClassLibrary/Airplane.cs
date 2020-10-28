@@ -1,36 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-namespace SimpleClassConlsole
+namespace SimpleClassLibrary
 {
-    class Airplane
+    public class Airplane
     {
-        public string StartCity;
+        protected string StartCity;
         protected string FinishCity;
+        // при вводі міри конвертую в найменьшу міру - для зручності (Fly_distance)
+        protected double Fly_distance;
+
         protected Date StartDate;
         protected Date FinishDate;
-        
-        public Airplane(string StartCity = "", string FinishCity = "", Date StartDate = null, Date FinishDate = null)
+
+        public Airplane(string StartCity = "", string FinishCity = "", double Fly_distance = 0, Date StartDate = null, Date FinishDate = null)
         {
             this.StartCity = StartCity;
             this.FinishCity = FinishCity;
+            this.Fly_distance = Fly_distance;
             this.StartDate = StartDate;
             this.FinishDate = FinishDate;
         }
-        public Airplane(string StartCity, string FinishCity)
+        public Airplane(string StartCity, string FinishCity, double Fly_distance)
         {
             this.StartCity = StartCity;
             this.FinishCity = FinishCity;
+            this.Fly_distance = Fly_distance;
             this.StartDate = null;
             this.FinishDate = null;
         }
-        public Airplane( Date StartDate, Date FinishDate )
+        public Airplane(Date StartDate, Date FinishDate)
         {
             this.StartCity = "";
             this.FinishCity = "";
+            this.Fly_distance = 0;
             this.StartDate = StartDate;
             this.FinishDate = FinishDate;
         }
@@ -38,26 +42,27 @@ namespace SimpleClassConlsole
         {
             StartCity = previousPerson.StartCity;
             FinishCity = previousPerson.FinishCity;
+            Fly_distance = previousPerson.Fly_distance;
             StartDate = previousPerson.StartDate;
             FinishDate = previousPerson.FinishDate;
         }
-        
+
         public Airplane() { }
         public void Set_StartCity(string StartCity) { this.StartCity = StartCity; }
         public void Set_FinishCity(string FinishCity) { this.FinishCity = FinishCity; }
         public void Set_StartDate(Date StartDate) { this.StartDate = StartDate; }
         public void Set_FinishDate(Date FinishDate) { this.FinishDate = FinishDate; }
-
+        public void Set_Fly_distance(double Fly_distance) { this.Fly_distance = Fly_distance; }
         public string Get_StartCity() { return StartCity; }
         public string Get_FinishCity() { return FinishCity; }
         public Date Get_StartDate() { return StartDate; }
         public Date Get_FinishDate() { return FinishDate; }
-
+        public double Get_Fly_distance() { return Fly_distance; }
 
         public int GetTotalTime()
         {
-            int Total_time = (FinishDate.Get_Year() - StartDate.Get_Year())*(365*1440);
-            if(FinishDate.Get_Month() < StartDate.Get_Month())
+            int Total_time = (FinishDate.Get_Year() - StartDate.Get_Year()) * (365 * 1440);
+            if (FinishDate.Get_Month() < StartDate.Get_Month())
                 Total_time += FinishDate.Get_Month() * 1440;
             else
                 Total_time += (FinishDate.Get_Month() - StartDate.Get_Month()) * 1440;
@@ -67,7 +72,7 @@ namespace SimpleClassConlsole
             else
                 Total_time += (FinishDate.Get_Day() - StartDate.Get_Day()) * 1440;
 
-            if(FinishDate.Get_Hours() < StartDate.Get_Hours())
+            if (FinishDate.Get_Hours() < StartDate.Get_Hours())
                 Total_time += FinishDate.Get_Hours() * 60;
             else
                 Total_time += (FinishDate.Get_Hours() - StartDate.Get_Hours()) * 60;
@@ -84,5 +89,4 @@ namespace SimpleClassConlsole
         }
 
     }
-    
 }
